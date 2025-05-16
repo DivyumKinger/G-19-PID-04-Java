@@ -28,10 +28,10 @@ public class Main {
             System.out.println(YELLOW + "+--------------------------------------------+" + RESET);
             System.out.print(GREEN + "Choose: " + RESET);
             int welcomeChoice = -1;
-            try {
+            try { // EXCEPTION HANDLING
                 welcomeChoice = sc.nextInt();
                 sc.nextLine();
-            } catch (InputMismatchException e) {
+            } catch (InputMismatchException e) { // EXCEPTION HANDLING (runtime)
                 System.out.println("Invalid input. Please enter a number.");
                 sc.nextLine();
                 continue;
@@ -112,10 +112,10 @@ public class Main {
                     System.out.println(YELLOW + "+--------------------------------------------+" + RESET);
                     System.out.print(GREEN + "Choose: " + RESET);
                     int choice = -1;
-                    try {
+                    try { // EXCEPTION HANDLING
                         choice = sc.nextInt();
                         sc.nextLine();
-                    } catch (InputMismatchException e) {
+                    } catch (InputMismatchException e) { // EXCEPTION HANDLING //Runtime
                         System.out.println("Invalid input. Please enter a number.");
                         sc.nextLine();
                         continue;
@@ -279,10 +279,10 @@ public class Main {
                     System.out.println(YELLOW + "+--------------------------------------------+" + RESET);
                     System.out.print(GREEN + "Choose: " + RESET);
                     int choice = -1;
-                    try {
+                    try { // EXCEPTION HANDLING
                         choice = sc.nextInt();
                         sc.nextLine();
-                    } catch (InputMismatchException e) {
+                    } catch (InputMismatchException e) { // EXCEPTION HANDLING also at Runtime
                         System.out.println("Invalid input. Please enter a number.");
                         sc.nextLine();
                         continue;

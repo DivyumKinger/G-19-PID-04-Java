@@ -214,7 +214,7 @@ public class Library {
 						nextBookId = id + 1;
 				}
 			}
-		} catch (IOException e) {
+		} catch (IOException e) { // EXCEPTION HANDLING
 			System.out.println("Error loading books from file.");
 		}
 	}
@@ -233,7 +233,7 @@ public class Library {
 				pw.println(sb.toString());
 				curr = curr.next;
 			}
-		} catch (IOException e) {
+		} catch (IOException e) { // EXCEPTION HANDLING
 			System.out.println("Error saving books to file.");
 		}
 	}
@@ -264,7 +264,7 @@ public class Library {
 						nextUserId = id + 1;
 				}
 			}
-		} catch (IOException e) {
+		} catch (IOException e) { // EXCEPTION HANDLING
 			System.out.println("Error loading users from file.");
 		}
 	}
@@ -277,7 +277,7 @@ public class Library {
 				pw.println(u.getId() + "," + u.getName() + "," + u.getPassword() + "," + u.getRole());
 				curr = curr.next;
 			}
-		} catch (IOException e) {
+		} catch (IOException e) { // EXCEPTION HANDLING
 			System.out.println("Error saving users to file.");
 		}
 	}
