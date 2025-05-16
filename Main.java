@@ -58,7 +58,7 @@ public class Main {
                     System.out.println("User does not exist.");
                     continue;
                 }
-                if (user.getPassword().equals(loginPass) && "admin".equals(user.getRole())) {
+                if (user.getPassword().equals(loginPass) && "admin".equals(user.getRole())) { // VALIDATE USER
                     isAuthenticated = true;
                     currentUser = loginUser;
                     currentRole = "admin";
@@ -80,7 +80,7 @@ public class Main {
                     System.out.println("User does not exist.");
                     continue;
                 }
-                if (user.getPassword().equals(loginPass) && "user".equals(user.getRole())) {
+                if (user.getPassword().equals(loginPass) && "user".equals(user.getRole())) { // VALIDATE USER
                     isAuthenticated = true;
                     currentUser = loginUser;
                     currentRole = "user";
@@ -219,9 +219,15 @@ public class Main {
                         case 7:
                             System.out.println("Users:");
                             library.showUsers();
-                            System.out.print("Username to update: ");
-                            String updateUser = sc.nextLine();
-                            User userToUpdate = library.findUserByName(updateUser);
+                            System.out.print("Enter username or user ID to update: ");
+                            String updateUserInput = sc.nextLine();
+                            User userToUpdate = null;
+                            try {
+                                int updateUserId = Integer.parseInt(updateUserInput);
+                                userToUpdate = library.findUserById(updateUserId);
+                            } catch (NumberFormatException e) {
+                                userToUpdate = library.findUserByName(updateUserInput);
+                            }
                             if (userToUpdate == null) {
                                 System.out.println("User not found.");
                                 System.out.print("Press Enter to return to menu...");
@@ -236,7 +242,7 @@ public class Main {
                             String newRoleUpdate = sc.nextLine();
                             if (newRoleUpdate.isEmpty())
                                 newRoleUpdate = userToUpdate.getRole();
-                            if (library.updateUser(updateUser, newPassword, newRoleUpdate)) {
+                            if (library.updateUser(userToUpdate.getName(), newPassword, newRoleUpdate)) {
                                 System.out.println("User updated.");
                             } else {
                                 System.out.println("Update failed.");
@@ -351,7 +357,8 @@ public class Main {
                         case 4:
                             isAuthenticated = false; // Logout
                             break;
-                        case 0:                            System.out.println("Goodbye!");
+                        case 0:
+                            System.out.println("Goodbye!");
                             System.exit(0);
                             break;
                         default:

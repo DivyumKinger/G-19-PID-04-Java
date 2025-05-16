@@ -153,12 +153,10 @@ public class Library {
 		UserNode curr = users.getHead();
 		while (curr != null) {
 			if (curr.data.getName().equalsIgnoreCase(username)) {
-				if (newPassword != null && !newPassword.isEmpty()) {
-					curr.data = new User(curr.data.getId(), curr.data.getName(), newPassword, curr.data.getRole());
-				}
-				if (newRole != null && !newRole.isEmpty()) {
-					curr.data = new User(curr.data.getId(), curr.data.getName(), curr.data.getPassword(), newRole);
-				}
+				String password = (newPassword != null && !newPassword.isEmpty()) ? newPassword
+						: curr.data.getPassword();
+				String role = (newRole != null && !newRole.isEmpty()) ? newRole : curr.data.getRole();
+				curr.data = new User(curr.data.getId(), curr.data.getName(), password, role);
 				saveUsers();
 				return true;
 			}
@@ -219,6 +217,7 @@ public class Library {
 		}
 	}
 
+	// SAVE books to the file
 	private void saveBooks() {
 		try (PrintWriter pw = new PrintWriter(new FileWriter(BOOKS_FILE))) {
 			BookNode curr = books.getHead();
@@ -269,6 +268,7 @@ public class Library {
 		}
 	}
 
+	// save users to the file
 	private void saveUsers() {
 		try (PrintWriter pw = new PrintWriter(new FileWriter(USERS_FILE))) {
 			UserNode curr = users.getHead();
