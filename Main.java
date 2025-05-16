@@ -351,8 +351,7 @@ public class Main {
                         case 4:
                             isAuthenticated = false; // Logout
                             break;
-                        case 0:
-                            System.out.println("Goodbye!");
+                        case 0:                            System.out.println("Goodbye!");
                             System.exit(0);
                             break;
                         default:
